@@ -3,11 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles for vertical lines before list items */
-ul li {
-  @apply border-l-2 border-gray-800 pl-4 ml-2; /* Adds vertical line using Tailwind */
+/* Only apply vertical lines to elements inside the .output div */
+.output p, .output h1, .output h2, .output h3, .output h4, .output h5, .output h6, .output div, .output span, .output li {
+  @apply border-l-2 border-gray-800 pl-4 ml-2; /* Tailwind to add vertical line */
 }
 
-ul {
-  @apply list-none font-mono; /* Removes bullet points, uses monospaced font for better alignment checking */
+.output {
+  @apply font-mono; /* Optional - monospace font for alignment checking */
 }
+
+

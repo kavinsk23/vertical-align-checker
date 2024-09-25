@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 
+/**
+ * Component to check the vertical alignment of HTML elements.
+ * Allows users to paste HTML code, processes it, and displays the text elements with vertical lines for alignment checks.
+ */
 const VerticalAlignChecker = () => {
-  // State to manage the input HTML and the processed output.
   const [htmlInput, setHtmlInput] = useState('');
   const [processedHtml, setProcessedHtml] = useState('');
 
-  // Handler for input changes in the textarea.
   const handleInputChange = (e) => {
     setHtmlInput(e.target.value);
   };
 
-  // Function to process the HTML input and render it with vertical lines.
   const processHTML = () => {
     setProcessedHtml(htmlInput); // Directly use the input HTML for rendering.
   };
@@ -19,7 +20,7 @@ const VerticalAlignChecker = () => {
     <section className="container mx-auto p-6">
       <header className="mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Vertical Alignment Checker</h1>
-        <p className="text-gray-600">Paste your HTML code below to check the vertical alignment of list items.</p>
+        <p className="text-gray-600">Paste your HTML code below to check the vertical alignment of text elements.</p>
       </header>
 
       <main>
@@ -50,7 +51,7 @@ const VerticalAlignChecker = () => {
         <section className="mt-8">
           <h2 className="text-2xl font-semibold text-gray-800">Processed HTML with Vertical Lines</h2>
           <div
-            className="mt-4 p-4 border border-gray-300 rounded-lg bg-gray-50"
+            className="output mt-4 p-4 border border-gray-300 rounded-lg bg-gray-50"
             aria-live="polite"
             aria-label="Processed HTML content"
             dangerouslySetInnerHTML={{ __html: processedHtml }}
