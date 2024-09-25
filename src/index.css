@@ -1,13 +1,13 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Tailwind Base Configuration */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for vertical lines before list items */
+ul li {
+  @apply border-l-2 border-gray-800 pl-4 ml-2; /* Adds vertical line using Tailwind */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ul {
+  @apply list-none font-mono; /* Removes bullet points, uses monospaced font for better alignment checking */
 }
