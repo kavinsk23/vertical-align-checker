@@ -2,25 +2,34 @@ import React, { useState } from 'react';
 
 /**
  * Component to check the vertical alignment of HTML elements.
- * Allows users to paste HTML code, processes it, and displays the text elements with vertical lines for alignment checks.
+ * Allows users to paste HTML and external CSS code, processes it, and displays the text elements with vertical lines for alignment checks.
  */
 const VerticalAlignChecker = () => {
   const [htmlInput, setHtmlInput] = useState('');
+  const [cssInput, setCssInput] = useState(''); // New state for external CSS
   const [processedHtml, setProcessedHtml] = useState('');
 
-  const handleInputChange = (e) => {
+  const handleHtmlInputChange = (e) => {
     setHtmlInput(e.target.value);
   };
 
+  const handleCssInputChange = (e) => {
+    setCssInput(e.target.value);
+  };
+
   const processHTML = () => {
-    setProcessedHtml(htmlInput); // Directly use the input HTML for rendering.
+    // Combine HTML and CSS for rendering
+    const styleTag = `<style>${cssInput}</style>`; // Wrap CSS in a <style> tag
+    const combinedHtml = `${styleTag} ${htmlInput}`; // Combine HTML and CSS
+
+    setProcessedHtml(combinedHtml); // Render the combined result
   };
 
   return (
     <section className="container mx-auto p-6">
       <header className="mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Vertical Alignment Checker</h1>
-        <p className="text-gray-600">Paste your HTML code below to check the vertical alignment of text elements.</p>
+        <p className="text-gray-600">Paste your HTML and optional CSS code below to check the vertical alignment of text elements.</p>
       </header>
 
       <main>
@@ -34,7 +43,22 @@ const VerticalAlignChecker = () => {
             className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Paste your HTML code here"
             value={htmlInput}
-            onChange={handleInputChange}
+            onChange={handleHtmlInputChange}
+            rows="10"
+          ></textarea>
+        </div>
+
+        {/* Textarea for CSS input */}
+        <div className="mb-4">
+          <label htmlFor="cssInput" className="block text-gray-700 font-medium mb-2">
+            CSS Code (Optional)
+          </label>
+          <textarea
+            id="cssInput"
+            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Paste your external CSS code here"
+            value={cssInput}
+            onChange={handleCssInputChange}
             rows="10"
           ></textarea>
         </div>
